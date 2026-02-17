@@ -72,6 +72,8 @@ public class WaveTrackCommand implements CommandExecutor {
                 return handleList(sender, args);
             case "reload":
                 return handleReload(sender);
+            case "debug":
+                return handleDebug(sender, args);
             case "help":
                 sendHelp(sender);
                 return true;
@@ -738,6 +740,57 @@ public class WaveTrackCommand implements CommandExecutor {
     }
 
     /**
+     * Handles /wavetrack debug [on/off]
+     */
+    private boolean handleDebug(CommandSender sender, String[] args) {
+        if (!sender.hasPermission("wavetrack.reload")) {
+            sender.sendMessage(PREFIX + ChatColor.RED + "You don't have permission to use this command.");
+            return true;
+        }
+
+        if (args.length < 2) {
+            // Toggle current state
+            boolean newState = !plugin.isDebugMode();
+            plugin.setDebugMode(newState);
+            if (newState) {
+                sender.sendMessage(PREFIX + ChatColor.GREEN + "Debug mode " + ChatColor.YELLOW + "ENABLED" + ChatColor.GREEN + ". Verbose logging is now active.");
+            } else {
+                sender.sendMessage(PREFIX + ChatColor.GREEN + "Debug mode " + ChatColor.GRAY + "DISABLED" + ChatColor.GREEN + ". Console output reduced.");
+            }
+            return true;
+        }
+
+        String setting = args[1].toLowerCase();
+        boolean enable;
+
+        switch (setting) {
+            case "on":
+            case "true":
+            case "enable":
+            case "enabled":
+                enable = true;
+                break;
+            case "off":
+            case "false":
+            case "disable":
+            case "disabled":
+                enable = false;
+                break;
+            default:
+                sender.sendMessage(PREFIX + ChatColor.RED + "Usage: /wavetrack debug [on/off]");
+                return true;
+        }
+
+        plugin.setDebugMode(enable);
+        if (enable) {
+            sender.sendMessage(PREFIX + ChatColor.GREEN + "Debug mode " + ChatColor.YELLOW + "ENABLED" + ChatColor.GREEN + ". Verbose logging is now active.");
+        } else {
+            sender.sendMessage(PREFIX + ChatColor.GREEN + "Debug mode " + ChatColor.GRAY + "DISABLED" + ChatColor.GREEN + ". Console output reduced.");
+        }
+        return true;
+    }
+
+    /**
      * Sends help message to sender.
      */
     private void sendHelp(CommandSender sender) {
@@ -761,6 +814,7 @@ public class WaveTrackCommand implements CommandExecutor {
         sender.sendMessage(ChatColor.YELLOW + "/wavetrack info <trackname>" + ChatColor.GRAY + " - View track details");
         sender.sendMessage(ChatColor.YELLOW + "/wavetrack list [category]" + ChatColor.GRAY + " - List all tracks");
         sender.sendMessage(ChatColor.YELLOW + "/wavetrack reload" + ChatColor.GRAY + " - Reload configuration");
+        sender.sendMessage(ChatColor.YELLOW + "/wavetrack debug [on/off]" + ChatColor.GRAY + " - Toggle debug/verbose mode");
     }
 }
 

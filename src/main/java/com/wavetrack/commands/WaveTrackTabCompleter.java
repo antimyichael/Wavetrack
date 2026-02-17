@@ -342,7 +342,7 @@ public class WaveTrackTabCompleter implements TabCompleter {
             List<String> subCommands = Arrays.asList(
                     "play", "create", "delete", "addsound", "removesound", "editsound", "clearsounds",
                     "rename", "copy", "move", "setnearby", "setradius", "setvolumemultiplier",
-                    "info", "list", "reload", "help"
+                    "info", "list", "reload", "debug", "help"
             );
             String partial = args[0].toLowerCase();
             for (String sub : subCommands) {
@@ -500,6 +500,12 @@ public class WaveTrackTabCompleter implements TabCompleter {
                 case "list":
                     if (args.length == 2) {
                         completions.addAll(filterByPrefix(trackManager.getCategories(), args[1]));
+                    }
+                    break;
+
+                case "debug":
+                    if (args.length == 2) {
+                        completions.addAll(filterByPrefix(Arrays.asList("on", "off"), args[1]));
                     }
                     break;
             }

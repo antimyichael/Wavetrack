@@ -13,6 +13,7 @@ A Spigot/Bukkit plugin for Minecraft 1.8 that allows developers to play preconfi
 - **YAML Configuration**: All tracks are saved to `config.yml` for easy manual editing
 - **Tab Completion**: Full tab completion support with common Minecraft 1.8 sounds
 - **Permission System**: Granular permissions for different command actions
+- **Debug Mode**: Toggle verbose console logging on/off to reduce console spam in production
 
 ## Commands
 
@@ -126,6 +127,12 @@ Lists all tracks, optionally filtered by category.
 ```
 Reloads the configuration file without restarting the server.
 
+### Debug Mode
+```
+/wavetrack debug [on/off]
+```
+Toggles debug/verbose mode on or off. When enabled, detailed information about track playback and plugin operations will be logged to the console. When disabled (default), only essential messages are logged to reduce console spam. Running the command without arguments will toggle the current state.
+
 ## Permissions
 
 | Permission | Description | Default |
@@ -143,6 +150,10 @@ Reloads the configuration file without restarting the server.
 The plugin automatically generates a `config.yml` file with example tracks:
 
 ```yaml
+# Debug mode - when enabled, detailed logging will be sent to console
+# Useful for troubleshooting, but can flood the console in production
+debug: false
+
 # Default settings for sounds (used when not specified)
 defaults:
   volume: 1.0

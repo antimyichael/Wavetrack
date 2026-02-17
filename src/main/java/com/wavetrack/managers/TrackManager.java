@@ -57,7 +57,7 @@ public class TrackManager {
         // Load tracks
         ConfigurationSection tracksSection = config.getConfigurationSection("tracks");
         if (tracksSection == null) {
-            plugin.getLogger().warning("No tracks section found in config.yml");
+            plugin.debugWarning("No tracks section found in config.yml");
             return;
         }
 
@@ -163,8 +163,12 @@ public class TrackManager {
 
         Location location = targetPlayer.getLocation();
 
+        plugin.debug("Playing track '" + trackName + "' to player " + targetPlayer.getName());
+        plugin.debug("Track has " + track.getSounds().size() + " sound(s), nearby-players: " + track.isNearbyPlayers());
+
         // Play sounds to target player
         for (TrackSound sound : track.getSounds()) {
+            plugin.debug("  Sound: " + sound.getSound() + " (vol=" + sound.getVolume() + ", pitch=" + sound.getPitch() + ", delay=" + sound.getDelay() + ")");
             if (sound.getDelay() > 0) {
                 // Schedule delayed sound
                 Bukkit.getScheduler().runTaskLater(plugin, () -> {
@@ -181,6 +185,7 @@ public class TrackManager {
             float volumeMultiplier = track.getNearbyVolumeMultiplier();
             int radius = track.getNearbyRadius();
             int radiusSquared = radius * radius;
+            int nearbyCount = 0;
 
             for (Player nearbyPlayer : targetPlayer.getWorld().getPlayers()) {
                 // Skip the target player
@@ -188,6 +193,7 @@ public class TrackManager {
 
                 // Check if player is within radius
                 if (nearbyPlayer.getLocation().distanceSquared(location) <= radiusSquared) {
+                    nearbyCount++;
                     for (TrackSound sound : track.getSounds()) {
                         float nearbyVolume = sound.getVolume() * volumeMultiplier;
 
@@ -201,6 +207,7 @@ public class TrackManager {
                     }
                 }
             }
+            plugin.debug("Played to " + nearbyCount + " nearby player(s) within radius " + radius);
         }
     }
 

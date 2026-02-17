@@ -1,6 +1,10 @@
 # WaveTrack Configuration
 # Configure your sound tracks below
 
+# Debug mode - when enabled, detailed logging will be sent to console
+# Useful for troubleshooting, but can flood the console in production
+debug: false
+
 # Default settings for sounds (used when not specified)
 defaults:
   volume: 1.0
