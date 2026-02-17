@@ -1,0 +1,126 @@
+# WaveTrack Configuration
+# Configure your sound tracks below
+
+# Default settings for sounds (used when not specified)
+defaults:
+  volume: 1.0
+  pitch: 1.0
+  delay: 0
+  nearby-players: false
+  nearby-radius: 10
+  nearby-volume-multiplier: 0.5
+
+# Tracks organized by category
+# Format:
+# tracks:
+#   category-name:
+#     track-name:
+#       nearby-players: true/false (optional, uses default if not set)
+#       nearby-radius: 10 (optional, uses default if not set)
+#       nearby-volume-multiplier: 0.5 (optional, multiplier for nearby player volume)
+#       sounds:
+#         - sound: random.levelup
+#           volume: 1.0
+#           pitch: 1.0
+#           delay: 0
+#         - sound: fireworks.blast
+#           volume: 0.8
+#           pitch: 1.2
+#           delay: 10
+
+# ============================================
+# Minecraft 1.8 Sound Reference:
+# ============================================
+# ambient.cave.cave, ambient.weather.rain, ambient.weather.thunder
+# damage.fallbig, damage.fallsmall, damage.hit, damage.hurtflesh
+# dig.cloth, dig.glass, dig.grass, dig.gravel, dig.sand, dig.snow, dig.stone, dig.wood
+# fire.fire, fire.ignite
+# fireworks.blast, fireworks.blast_far, fireworks.largeBlast, fireworks.largeBlast_far
+# fireworks.launch, fireworks.twinkle, fireworks.twinkle_far
+# liquid.lava, liquid.lavapop, liquid.splash, liquid.swim, liquid.water
+# minecart.base, minecart.inside
+# mob.bat.*, mob.blaze.*, mob.cat.*, mob.chicken.*, mob.cow.*, mob.creeper.*
+# mob.enderdragon.*, mob.endermen.*, mob.ghast.*, mob.guardian.*, mob.horse.*
+# mob.irongolem.*, mob.magmacube.*, mob.pig.*, mob.rabbit.*, mob.sheep.*
+# mob.silverfish.*, mob.skeleton.*, mob.slime.*, mob.spider.*, mob.villager.*
+# mob.wither.*, mob.wolf.*, mob.zombie.*, mob.zombiepig.*
+# note.bass, note.bassattack, note.bd, note.harp, note.hat, note.pling, note.snare
+# portal.portal, portal.travel, portal.trigger
+# random.anvil_break, random.anvil_land, random.anvil_use, random.bow, random.bowhit
+# random.break, random.burp, random.chestclosed, random.chestopen, random.click
+# random.door_close, random.door_open, random.drink, random.eat, random.explode
+# random.fizz, random.fuse, random.glass, random.levelup, random.orb, random.pop
+# random.splash, random.successful_hit, random.toast, random.wood_click
+# records.11, records.13, records.blocks, records.cat, records.chirp, records.far
+# records.mall, records.mellohi, records.stal, records.strad, records.wait, records.ward
+# step.cloth, step.grass, step.gravel, step.ladder, step.sand, step.snow, step.stone, step.wood
+# tile.piston.in, tile.piston.out
+# ============================================
+
+tracks:
+  examples:
+    level-up:
+      nearby-players: true
+      nearby-radius: 15
+      nearby-volume-multiplier: 0.4
+      sounds:
+        - sound: random.levelup
+          volume: 1.0
+          pitch: 1.0
+          delay: 0
+        - sound: random.orb
+          volume: 0.8
+          pitch: 1.2
+          delay: 5
+    rare-drop:
+      nearby-players: true
+      nearby-radius: 20
+      nearby-volume-multiplier: 0.3
+      sounds:
+        - sound: random.levelup
+          volume: 1.0
+          pitch: 0.8
+          delay: 0
+        - sound: fireworks.blast
+          volume: 1.0
+          pitch: 1.0
+          delay: 5
+        - sound: fireworks.twinkle
+          volume: 0.8
+          pitch: 1.2
+          delay: 15
+    error:
+      nearby-players: false
+      sounds:
+        - sound: mob.villager.no
+          volume: 1.0
+          pitch: 1.0
+          delay: 0
+    success:
+      nearby-players: false
+      sounds:
+        - sound: random.click
+          volume: 1.0
+          pitch: 1.5
+          delay: 0
+    chest-open:
+      nearby-players: false
+      sounds:
+        - sound: random.chestopen
+          volume: 1.0
+          pitch: 1.0
+          delay: 0
+    explosion:
+      nearby-players: true
+      nearby-radius: 30
+      nearby-volume-multiplier: 0.6
+      sounds:
+        - sound: random.explode
+          volume: 1.0
+          pitch: 1.0
+          delay: 0
+        - sound: random.fizz
+          volume: 0.5
+          pitch: 1.2
+          delay: 10
+

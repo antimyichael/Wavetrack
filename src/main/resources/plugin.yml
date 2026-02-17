@@ -1,0 +1,43 @@
+name: WaveTrack
+version: 1.0.0
+main: com.wavetrack.WaveTrack
+api-version: 1.8
+description: A plugin to play preconfigured sound tracks to players
+author: DataThorn
+
+commands:
+  wavetrack:
+    description: Main command for WaveTrack plugin
+    usage: /<command> <subcommand> [args]
+    aliases: [wt]
+
+permissions:
+  wavetrack.*:
+    description: Gives access to all WaveTrack commands
+    default: op
+    children:
+      wavetrack.play: true
+      wavetrack.create: true
+      wavetrack.edit: true
+      wavetrack.delete: true
+      wavetrack.list: true
+      wavetrack.reload: true
+  wavetrack.play:
+    description: Allows playing tracks to players
+    default: op
+  wavetrack.create:
+    description: Allows creating new tracks
+    default: op
+  wavetrack.edit:
+    description: Allows editing existing tracks
+    default: op
+  wavetrack.delete:
+    description: Allows deleting tracks
+    default: op
+  wavetrack.list:
+    description: Allows listing all tracks
+    default: op
+  wavetrack.reload:
+    description: Allows reloading the plugin configuration
+    default: op
+
