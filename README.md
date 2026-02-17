@@ -406,5 +406,4 @@ The server will start with your plugin automatically installed. Connect with Min
 
 ## License
 
-This plugin is provided as-is for use on Minecraft servers.
-
+This plugin is provided as-is for use on Minecraft servers by the DataThorn Technologies family. Modifications to the content of this plugin are prohibited. Attempts to profit from this plugin without granted permission from the DataThorn Technologies family or the AsianF4rmer Network will be answered with legal action.
