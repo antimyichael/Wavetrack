@@ -1,4 +1,5 @@
 # WaveTrack Plugin
+### Open-source project for the AsianF4rmer Network and DataThorn Technologies family.
 
 A Spigot/Bukkit plugin for Minecraft 1.8 that allows developers to play preconfigured sound tracks to players using a single command instead of multiple `/playsound` commands.
 
