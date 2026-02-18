@@ -112,7 +112,10 @@ public class WaveTrackCommand implements CommandExecutor {
         }
 
         trackManager.playTrack(trackName, target);
-        sender.sendMessage(PREFIX + ChatColor.GREEN + "Playing track '" + trackName + "' to " + target.getName() + ".");
+        // Only send confirmation to players or when debug mode is enabled to reduce console spam
+        if (sender instanceof Player || plugin.isDebugMode()) {
+            sender.sendMessage(PREFIX + ChatColor.GREEN + "Playing track '" + trackName + "' to " + target.getName() + ".");
+        }
         return true;
     }
 
